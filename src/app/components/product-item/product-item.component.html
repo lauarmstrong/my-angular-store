@@ -1,0 +1,22 @@
+<div class="product-container">
+    <div class="title-wrapper">
+        <p class="title">{{product.name}}</p>
+        <!-- <button (click)="onDelete(product)" class="delete-button">X</button> -->
+    </div>
+    <a routerLink="products/{{product.id}}">
+        <img src={{product.url}} class="product-image" />
+    </a>
+    <p>£{{product.price}}</p>
+    <!-- <div class="quantity-wrapper">
+        <p>{{product.quantity}}</p>
+        <div class="quantity-buttons">
+            <button (click)="onIncrement(product)">+</button>
+            <button (click)="onDecrement(product)">-</button>
+        </div>
+    </div> -->
+    <!-- <button (click)="onIncrement(product)">+</button>
+    <button (click)="onDecrement(product)">-</button>
+    <button (click)="onDelete(product)">X</button>
+    <button (click)="marked.emit(product)">Add to wishlist</button> -->
+    <button (click)="addToCart(product)">Add to cart</button>
+</div>

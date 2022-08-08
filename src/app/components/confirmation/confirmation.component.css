@@ -1,0 +1,13 @@
+.confirmation-container {
+    align-items: center;
+    margin-top: 8%;
+    max-width: 600px;
+  }
+  
+  .confirmation-message {
+    margin-bottom: 30px;
+  }
+
+  .link-to-home {
+    margin-top: 30px;
+  }

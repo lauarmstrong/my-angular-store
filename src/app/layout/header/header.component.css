@@ -1,0 +1,21 @@
+
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  a {
+    color: #ffffff;
+  }
+  .cart-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    padding-right: 20px;
+  }
+  img {
+    padding-left: 10px;
+  }

@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <div class="heading">
+        <h2>Products</h2>
+        <p>Have a browse and see what you like</p>
+    </div>
+    <div class="product-container">
+        <app-product-item *ngFor="let product of productList" [product]="product"></app-product-item>
+    </div>
+</div>

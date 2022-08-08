@@ -1,0 +1,20 @@
+<div class="heading">
+    <h2>Cart</h2>
+    <p>Time to double-check your order</p>
+</div>
+<div class="cart-page">
+
+    <div class="cart-panel" *ngIf="cartLength > 0; else emptyCartMessage">
+        <app-cart-item *ngFor="let product of cartItemsList" [product]="product" (notifyDelete)="removeProduct($event)">
+        </app-cart-item>
+        <div class="total-price">
+            £{{totalPrice}}
+        </div>
+        <div class="payment-form">
+            <app-payment-form></app-payment-form>
+        </div>
+    </div>
+    <ng-template #emptyCartMessage class="empty-cart-message">
+        <p>You have no items in your cart.</p>
+    </ng-template>
+</div>

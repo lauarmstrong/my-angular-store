@@ -1,0 +1,13 @@
+<div class="cart-item">
+    <img src={{product.url}} height="100" width="80" class="cart-img" />
+    <p>{{product.name}}</p>
+    <div class="quantity-wrapper">
+        <p>Quantity: {{product.quantity}}</p>
+        <div class="quantity-buttons">
+            <button (click)="onIncrement(product)">+</button>
+            <button (click)="onDecrement(product)">-</button>
+        </div>
+    </div>
+    <p>£{{totalPrice}}</p>
+    <button (click)="onDelete(product)" class="delete-button">X</button>
+</div>
