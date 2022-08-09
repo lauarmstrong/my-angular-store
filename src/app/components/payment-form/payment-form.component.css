@@ -1,4 +1,16 @@
+.input-wrapper {
+    width: 100%;
+}
 input {
     width: 100%;
-    padding-bottom: 10px;
+}
+
+p {
+    font-size: xx-small;
+}
+
+.error-message {
+    margin: 0;
+    padding: 0;
+    color: red;
 }

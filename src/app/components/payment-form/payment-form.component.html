@@ -1,28 +1,69 @@
 <form (ngSubmit)="submitForm(form.value)" #form="ngForm">
     <h3>Please enter your details</h3>
     <h4>Contact Details</h4>
-    <input type="text" name="name" required minlength="2" placeholder="Full Name" [(ngModel)]="address.name" />
+    <div class="input-wrapper">
+        <input type="text" name="name" #formName="ngModel" required minlength="2" placeholder="Full Name"
+            [(ngModel)]="address.name" />
+        <div *ngIf="formName.invalid && formName.dirty" class="error-message">
+            <p *ngIf="formName?.errors?.['required']">
+                This is a required field.
+            </p>
+            <p *ngIf="formName?.errors?.['minlength']">
+                Please ensure your details are correct.
+            </p>
+        </div>
+    </div>
     <br>
-    <input type="text" name="email" email required placeholder="Email" [(ngModel)]="address.email" />
+    <div class="input-wrapper">
+        <input type="text" name="email" #formEmail="ngModel" email required placeholder="Email"
+            [(ngModel)]="address.email" />
+        <div *ngIf="formEmail.invalid && formEmail.dirty" class="error-message">
+            <p>
+                Enter a valid email.
+            </p>
+        </div>
+    </div>
     <br>
-    <input type="text" name="phone" placeholder="Phone" maxlength="11" [(ngModel)]="address.phone" />
+    <div class="input-wrapper">
+        <input type="text" name="phone" placeholder="Phone (optional)" maxlength="11" [(ngModel)]="address.phone" />
+    </div>
     <br>
     <h4>Address</h4>
-    <input type="text" name="firstLineAddress" required placeholder="First Line Address"
-        [(ngModel)]="address.firstLineAddress" />
+    <div class="input-wrapper">
+        <input type="text" name="firstLineAddress" #formAddress="ngModel" required placeholder="First Line Address"
+            [(ngModel)]="address.firstLineAddress" />
+        <div *ngIf="formAddress.invalid && formAddress.dirty" class="error-message">
+            <p *ngIf="formAddress?.errors?.['required']">
+                This is a required field.
+            </p>
+        </div>
+    </div>
     <br>
-    <input type="text" name="postcode" required placeholder="Postcode" [(ngModel)]="address.postcode" />
+    <div class="input-wrapper">
+        <input type="text" name="postcode" #formPostcode="ngModel" required placeholder="Postcode"
+            [(ngModel)]="address.postcode" />
+        <div *ngIf="formPostcode.invalid && formPostcode.dirty" class="error-message">
+            <p *ngIf="formPostcode?.errors?.['required']">
+                This is a required field.
+            </p>
+        </div>
+    </div>
     <br>
-    <input type="text" name="cardNumber" placeholder="Card Number" [(ngModel)]="address.cardNumber" />
-    <br>
-    <input type="submit" value="submit" class="btn btn-primary" [disabled]="form.invalid" />
+    <h4>Payment</h4>
+    <div class="input-wrapper">
+        <input type="text" name="cardNumber" #formCard="ngModel" minlength="16" required placeholder="Card Number"
+            [(ngModel)]="address.cardNumber" />
+        <div *ngIf="formCard.invalid && formCard.dirty" class="error-message">
+            <p *ngIf="formCard?.errors?.['required']">
+                This is a required field.
+            </p>
+            <p *ngIf="formCard?.errors?.['minlength']">
+                Please enter 16-digit number.
+            </p>
+        </div>
+    </div>
+    <br />
+    <div class="input-wrapper">
+        <input type="submit" value="submit" [disabled]="form.invalid" />
+    </div>
 </form>
-
-<div *ngIf="form.invalid && form.dirty">
-    <div *ngIf="form?.errors?.['required']">
-        Please complete all required fields.
-    </div>
-    <div *ngIf="form?.errors?.['minlength']">
-        Please ensure all your details are correct.
-    </div>
-</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/Product';
-import { map, Observable } from 'rxjs';
+import { map, Observable, filter } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Address } from '../models/Address';
 
@@ -24,17 +24,29 @@ export class HttpService {
     return this.http.get<Product[]>('../assets/data.json');
   }
   addProductToCart(product: Product) {
-    this.cartItemsList.push(product);
-    alert(`${product.quantity} ${product.name}(s) added to your cart!`);
+    // Check if product has already been added to cart
+    if (this.cartItemsList.some((p) => p.id === product.id)) {
+      alert(`You now have ${product.quantity} ${product.name} in your cart :)`);
+    } else {
+      this.cartItemsList.push(product);
+      alert(`${product.quantity} ${product.name} added to your cart!`);
+    }
+    this.calculateCartCount();
+    localStorage.setItem('cartProducts', JSON.stringify(this.cartItemsList));
     return this.cartItemsList;
   }
 
   removeProductFromCart(product: Product) {
     this.cartItemsList = this.cartItemsList.filter((p) => p.id !== product.id);
+    localStorage.setItem('cartProducts', JSON.stringify(this.cartItemsList));
   }
 
   getCartItems(): Product[] {
-    return this.cartItemsList;
+    return JSON.parse(localStorage.getItem('cartProducts')!);
+  }
+
+  calculateCartCount(): number {
+    return this.getCartItems().length;
   }
 
   calculateCartTotal(): number {
@@ -44,7 +56,9 @@ export class HttpService {
       this.totalPrice +=
         this.cartItemsList[i].price * this.cartItemsList[i].quantity;
     }
-    return Math.round(this.totalPrice * 100) / 100;
+    this.totalPrice = Math.round(this.totalPrice * 100) / 100;
+
+    return this.totalPrice;
   }
 
   addAddressToOrder(data: Address): void {
@@ -53,5 +67,16 @@ export class HttpService {
 
   getAddress(): Address {
     return this.address;
+  }
+
+  getProductById(id: Number): any {
+    return this.getProducts().pipe(
+      map((products: Product[]) => products.find((p) => p.id === id))
+    );
+  }
+
+  clearCart(): void {
+    this.cartItemsList = [];
+    localStorage.setItem('cartProducts', JSON.stringify(this.cartItemsList));
   }
 }

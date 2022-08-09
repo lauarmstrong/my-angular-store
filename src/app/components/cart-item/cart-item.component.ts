@@ -10,6 +10,7 @@ import { Product } from '../../models/Product';
 export class CartItemComponent implements OnInit {
   @Input() product: Product;
   @Output() notifyDelete: EventEmitter<Product> = new EventEmitter();
+  @Output() notifyEdit: EventEmitter<Product> = new EventEmitter();
   totalPrice: number = 0;
   constructor(private httpService: HttpService) {
     this.product = {
@@ -23,32 +24,27 @@ export class CartItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.totalPrice = this.product.price * this.product.quantity;
+    this.totalPrice =
+      Math.round(this.product.price * this.product.quantity * 100) / 100;
   }
   calculatePrice(product: Product): void {
-    this.totalPrice = product.price * product.quantity;
+    this.totalPrice = Math.round(product.price * product.quantity * 100) / 100;
   }
 
   onIncrement(product: Product): void {
     product.quantity += 1;
     this.calculatePrice(product);
+    this.notifyEdit.emit(product);
   }
   onDecrement(product: Product): void {
-    if (product.quantity > 0) {
+    if (product.quantity > 1) {
       product.quantity -= 1;
     }
     this.calculatePrice(product);
+    this.notifyEdit.emit(product);
   }
 
   async onDelete(product: Product): Promise<void> {
     this.notifyDelete.emit(product);
-    // try {
-    //   await this.httpService.removeProductFromCart(product);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    product.quantity = 0;
-    // // this.removeProductFromCart.emit(product);
-    this.calculatePrice(product);
   }
 }

@@ -30,29 +30,12 @@ export class PaymentFormComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  // addAddress(address: Address): void {
-  //   alert('Address added!');
-  // }
 
   submitForm(data: Address): void {
-    // const address = {
-    //   name: this.address.name,
-    //   email: this.address.email,
-    //   phone: this.address.phone,
-    //   firstLineAddress: this.address.firstLineAddress,
-    //   postcode: this.address.postcode,
-    //   cardNumber: this.address.cardNumber,
-    // };
     this.address = data;
     alert(`Thanks for the order ${data.name}!`);
     this.httpService.addAddressToOrder(data);
+    this.httpService.clearCart();
     this.router.navigate(['/order-confirmation']);
-    // this.addAddress.emit(address);
-    // this.address.name = '';
-    // this.address.email = '';
-    // this.address.phone = '';
-    // this.address.firstLineAddress = '';
-    // this.address.postcode = '';
-    // this.address.cardNumber = '';
   }
 }

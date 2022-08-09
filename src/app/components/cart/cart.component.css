@@ -16,9 +16,15 @@ img {
   }
 
   .payment-form {
-    margin-top: 50px;
+    margin-left: 50px;
+    width: 300px;
   }
 
   .empty-cart-message {
+    margin-top: 50px;
+  }
+
+  .cart-panel {
+    display: flex;
     margin-top: 50px;
   }

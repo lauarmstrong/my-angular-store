@@ -1,27 +1,12 @@
 # MyStoreProject
 
+This project is a single page e-commerce application, complete with a product page, product-detail page, cart page and confirmation page.
+The user should be able to add items to the cart, increase/decrease the quantity of items from the cart page, and also delete items from their cart.
+After filling in the checkout form (complete with form-validation and FE errors) they will be redirected to the confirmation page.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
-## Development server
+## Running locally
 
+Run `npm install`
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

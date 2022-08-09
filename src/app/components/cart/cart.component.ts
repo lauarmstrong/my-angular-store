@@ -25,5 +25,17 @@ export class CartComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
+    this.totalPrice = this.httpService.calculateCartTotal();
+    this.cartItemsList = this.httpService.getCartItems();
+  }
+
+  async editQuantity(product: Product): Promise<void> {
+    localStorage.setItem('cartProducts', JSON.stringify(this.cartItemsList));
+    try {
+      await this.httpService.calculateCartTotal();
+    } catch (err) {
+      console.log(err);
+    }
+    this.totalPrice = this.httpService.calculateCartTotal();
   }
 }
