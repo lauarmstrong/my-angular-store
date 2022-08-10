@@ -42,7 +42,11 @@ export class HttpService {
   }
 
   getCartItems(): Product[] {
-    return JSON.parse(localStorage.getItem('cartProducts')!);
+    let fetchedCartItems = JSON.parse(localStorage.getItem('cartProducts')!);
+    if (fetchedCartItems === null) {
+      fetchedCartItems = [];
+    }
+    return fetchedCartItems;
   }
 
   calculateCartCount(): number {
