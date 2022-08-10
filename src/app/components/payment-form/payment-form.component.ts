@@ -15,7 +15,7 @@ export class PaymentFormComponent implements OnInit {
     phone: '',
     firstLineAddress: '',
     postcode: '',
-    cardNumber: '',
+    cardNumber: 0,
   };
 
   constructor(private router: Router, private httpService: HttpService) {
@@ -25,7 +25,7 @@ export class PaymentFormComponent implements OnInit {
       phone: '',
       firstLineAddress: '',
       postcode: '',
-      cardNumber: '',
+      cardNumber: 0,
     };
   }
 

@@ -4,7 +4,7 @@ export class Address {
   phone: string;
   firstLineAddress: string;
   postcode: string;
-  cardNumber: string;
+  cardNumber: number;
 
   constructor() {
     this.name = '';
@@ -12,6 +12,6 @@ export class Address {
     this.phone = '';
     this.firstLineAddress = '';
     this.postcode = '';
-    this.cardNumber = '';
+    this.cardNumber = 0;
   }
 }

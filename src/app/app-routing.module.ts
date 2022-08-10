@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductItemDetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'order-confirmation', component: ConfirmationComponent },
+  // Redirect to home if user provides invalid url
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({

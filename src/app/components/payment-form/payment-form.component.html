@@ -51,13 +51,10 @@
     <br>
     <h4>Payment</h4>
     <div class="input-wrapper">
-        <input type="text" name="cardNumber" #formCard="ngModel" minlength="16" required placeholder="Card Number"
+        <input type="number" name="cardNumber" #formCard="ngModel" minlength="16" required placeholder="Card Number"
             [(ngModel)]="address.cardNumber" />
         <div *ngIf="formCard.invalid && formCard.dirty" class="error-message">
-            <p *ngIf="formCard?.errors?.['required']">
-                This is a required field.
-            </p>
-            <p *ngIf="formCard?.errors?.['minlength']">
+            <p *ngIf="formCard.invalid">
                 Please enter 16-digit number.
             </p>
         </div>

@@ -13,7 +13,7 @@ export class ConfirmationComponent implements OnInit {
     phone: '',
     firstLineAddress: '',
     postcode: '',
-    cardNumber: '',
+    cardNumber: 0,
   };
   constructor(private httpService: HttpService) {}
 

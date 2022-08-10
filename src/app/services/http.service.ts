@@ -16,7 +16,7 @@ export class HttpService {
     phone: '',
     firstLineAddress: '',
     postcode: '',
-    cardNumber: '',
+    cardNumber: 0,
   };
   constructor(private http: HttpClient) {}
 
@@ -38,6 +38,7 @@ export class HttpService {
 
   removeProductFromCart(product: Product) {
     this.cartItemsList = this.cartItemsList.filter((p) => p.id !== product.id);
+    alert(`${product.quantity} ${product.name} removed from your cart`);
     localStorage.setItem('cartProducts', JSON.stringify(this.cartItemsList));
   }
 
